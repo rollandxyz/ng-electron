@@ -33,9 +33,8 @@ npm run package:all
 
 ## Reference
 
-- https://www.telerik.com/blogs/angular-on-desktop
-- https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/
-- https://pkief.medium.com/global-error-handling-in-angular-ea395ce174b1
-- https://stackblitz.com/edit/angular-global-error-handling?file=README.md
-- https://rollbar.com/blog/error-handling-with-angular-8-tips-and-best-practices/
-- https://levelup.gitconnected.com/bad-practices-you-should-avoid-with-angular-development-58098e5542d5
+- [Error Handling with Angular 8 – Tips and Best Practices](https://rollbar.com/blog/error-handling-with-angular-8-tips-and-best-practices/)
+  - [Global Error Handling in Angular](https://pkief.medium.com/global-error-handling-in-angular-ea395ce174b1)
+  - https://stackblitz.com/edit/angular-global-error-handling?file=README.md
+- [Overview of Progressive Web Apps (PWAs)](https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/)
+- [Angular on Desktop](https://www.telerik.com/blogs/angular-on-desktop)
