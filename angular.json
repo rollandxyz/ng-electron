@@ -27,7 +27,9 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/package.json",
+              "src/electron.prod.js"
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
@@ -91,7 +93,9 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/package.json",
+              "src/electron.prod.js"
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",

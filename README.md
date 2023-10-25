@@ -1,15 +1,21 @@
-# Desktop App with Angular and Electron
+# Desktop App with Angular using Electron
 
 ```bash
 npm install -g npm
 npm install -g @angular/cli
 ng new ng-electron
 ng add @angular/material
-
-
-
 gh auth login
 
+
+npm install electron --save-dev
+npm install cross-var --save-dev
+npm install concurrently --save-dev
+npm install electron-packager  --save-dev
+
+npm run start
+
+npm run package:all
 
 ```
 
