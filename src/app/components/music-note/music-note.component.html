@@ -1,0 +1,22 @@
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container *ngFor="let column of displayedColumns" matColumnDef="{{column}}">
+      <mat-header-cell *matHeaderCellDef
+          [style.background-color]="'aqua'"
+          [matTooltip]="getColumnTooltipText(column)">
+        {{column}}</mat-header-cell>
+      <mat-cell 
+        [class.color]="column === 'Moveable Notes'" 
+        *matCellDef="let row" >
+         {{getKeyValue(row, column)}} 
+      </mat-cell>
+    </ng-container>    
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row [@rowsAnimation]=""         
+        *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+    <!--    [class.color]="row.moveSemiTone === 0"    -->
+  </mat-table>
+</div>

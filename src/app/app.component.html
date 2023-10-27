@@ -1,19 +1,26 @@
 
-<mat-toolbar color="primary"> Desktop with Angular and Electron </mat-toolbar>
+<mat-toolbar color="primary"> 
+  <mat-toolbar-row>
+    Desktop with Angular and Electron
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-toolbar> 
+  <mat-toolbar-row> 
+    <button mat-raised-button color="warn" (click)="localError()">
+      Local front end error
+    </button>
+    <button mat-raised-button color="accent" (click)="failingRequest()">
+      Server request with error
+    </button>
+
+    <span class="example-spacer"></span>
+
+    <button mat-raised-button color="primary" (click)="successfulRequest()">
+      Successful request showing loading spinner
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
 
 <div class="content-container">
-  <button mat-raised-button (click)="localError()">
-    Local front end error
-  </button>
-  <button mat-raised-button (click)="failingRequest()">
-    Server request with error
-  </button>
-  <button mat-raised-button (click)="successfulRequest()">
-    Successful request showing loading spinner
-  </button>
-</div>
-
-
- 
-<h1> Desktop with Angular and Electron </h1>
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>  
+</div> 

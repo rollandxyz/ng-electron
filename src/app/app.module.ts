@@ -8,10 +8,17 @@ import { MaterialModule } from './material.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
+import { DataService } from './services/data.service';
+import { MusicNoteComponent } from './components/music-note/music-note.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { TransposeService } from './services/transpose.service';
+import { NoteService } from './services/note.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MusicNoteComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +29,11 @@ import { HttpClientModule } from '@angular/common/http';
     CoreModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [
+    DataService,
+    TransposeService,
+    NoteService
+  ],
   entryComponents: [AppComponent],
   bootstrap: [AppComponent]
 })

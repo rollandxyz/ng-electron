@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -7,18 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private http: HttpClient) {}
+  constructor(private dataService: DataService) {}
 
   localError() {
-    throw Error('The app component has thrown an error!');
+    this.dataService.localError();
   }
 
   failingRequest() {
-    this.http.get('https://httpstat.us/404?sleep=2000').subscribe(x => { });
+    this.dataService.failingRequest();
   }
 
   successfulRequest() {
-    this.http.get('https://httpstat.us/200?sleep=2000').subscribe(x => { });
+    this.dataService.successfulRequest();
   }
 }
 

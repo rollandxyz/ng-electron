@@ -4,7 +4,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { GlobalErrorHandler } from './error/global-error-handler';
 import { HttpLoadingInterceptor } from './error/http-loading.interceptor';
 
-
+// https://blog.davidjs.com/2021/02/angular-animation-trap/
 @NgModule({
   declarations: [],
   imports: [CommonModule],
