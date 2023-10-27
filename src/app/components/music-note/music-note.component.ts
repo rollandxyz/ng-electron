@@ -1,9 +1,9 @@
 import { MatTableDataSource } from '@angular/material/table';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { rowsAnimation } from './../../animations/template.animations';
 import { TransposedRow } from './../../models/transposed-row';
 import { NoteService } from './../../services/note.service';
-
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-music-note',
@@ -16,17 +16,45 @@ export class MusicNoteComponent {
 
   displayedColumns = ['Move SemiTone', 'Moveable Notes', 'C', 'C#-Db', 'D', 'D#-Eb', 'E', 'F', 'F#-Gb', 'G', 'G#-Ab', 'A', 'A#-Bb', 'B'];
   dataSource: MatTableDataSource<TransposedRow>;
+  transposedRows: TransposedRow[] = [];
 
-  constructor(private noteService: NoteService) {
-    const transposedRows: TransposedRow[] = [];
-    //this.getSuperLowNotes(transposedRows);
-    //this.getLowNotes(transposedRows);
-    this.noteService.getMiddleNotes(transposedRows);
+  typeOfNotes = this._formBuilder.group({
+    lowNotes: false,
+    superLowNotes: false,
+    middleNotes: true,
+    highNotes: false,
+    superHighNotes: false
+  });
 
+  constructor(private noteService: NoteService, private _formBuilder: FormBuilder) {
+    this.noteService.getMiddleNotes(this.transposedRows);
     // Assign the data to the data source for the table to render.
-    this.dataSource = new MatTableDataSource(transposedRows);
+    this.dataSource = new MatTableDataSource(this.transposedRows);
   }
-    
+  
+  typeOfNoteChanged() {
+    this.transposedRows = [];
+    if (this.typeOfNotes.value.superHighNotes) {
+      this.noteService.getSuperHighNotes(this.transposedRows);
+    }
+
+    if (this.typeOfNotes.value.highNotes) {
+      this.noteService.getHighNotes(this.transposedRows);
+    }
+
+    if (this.typeOfNotes.value.middleNotes) {
+      this.noteService.getMiddleNotes(this.transposedRows);
+    }
+
+    if (this.typeOfNotes.value.lowNotes) {
+      this.noteService.getLowNotes(this.transposedRows);
+    }
+    if (this.typeOfNotes.value.superLowNotes) {
+      this.noteService.getSuperLowNotes(this.transposedRows);
+    }
+    this.dataSource = new MatTableDataSource(this.transposedRows);
+  }
+
   getColumnTooltipText(column: string): string {
     return(column === 'Move SemiTone' || column === 'Moveable Notes') ? '' : `${column} Major Note Played with C Key Harmonica`;
   }

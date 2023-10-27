@@ -13,6 +13,9 @@ import { MusicNoteComponent } from './components/music-note/music-note.component
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TransposeService } from './services/transpose.service';
 import { NoteService } from './services/note.service';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {JsonPipe} from '@angular/common';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { NoteService } from './services/note.service';
     MaterialModule,
     CoreModule,
     SharedModule,
+    FormsModule, ReactiveFormsModule, MatCheckboxModule, JsonPipe
   ],
   providers: [
     DataService,

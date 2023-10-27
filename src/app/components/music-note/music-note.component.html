@@ -1,3 +1,18 @@
+<section class="example-section" [formGroup]="typeOfNotes">
+  <mat-checkbox formControlName="superHighNotes"  (change)="typeOfNoteChanged()">superHighNotes</mat-checkbox>
+  <mat-checkbox formControlName="highNotes"  (change)="typeOfNoteChanged()">highNotes</mat-checkbox>
+  <mat-checkbox formControlName="middleNotes"  (change)="typeOfNoteChanged()">middleNotes</mat-checkbox>
+  <mat-checkbox formControlName="lowNotes"  (change)="typeOfNoteChanged()">lowNotes</mat-checkbox>
+  <mat-checkbox formControlName="superLowNotes"  (change)="typeOfNoteChanged()">superLowNotes</mat-checkbox>
+</section>
+
+<!-- 
+<section class="example-section" [formGroup]="typeOfNotes">
+  <h4>You chose:</h4>
+  {{typeOfNotes.value | json}}
+</section>
+
+-->
 
 <div class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">

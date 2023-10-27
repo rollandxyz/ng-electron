@@ -1,4 +1,3 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { TransposeService } from "./transpose.service";
 import { TransposedRow } from "../models/transposed-row";
