@@ -8,31 +8,33 @@ export class NoteService {
   constructor(private transposeService: TransposeService) {}
   
   getSuperLowNotes(rows: TransposedRow[]) {
-    for(let i=24; i>12; i--) {
-      var dataRow = this.transposeOneScale(-1*i);
+    for(let i=24; i<36; i++) {
+      const semi = -1*i;
+      var dataRow = this.transposeOneScale(semi);
       rows.push(dataRow); 
     }
   }
   getLowNotes(rows: TransposedRow[]) {
-    for(let i=12; i>0; i--) {
-      var dataRow = this.transposeOneScale(-1*i);
+    for(let i=12; i<24; i++) {
+      const semi = -1*i;
+      var dataRow = this.transposeOneScale(semi);
       rows.push(dataRow); 
     }
   }
   getMiddleNotes(rows: TransposedRow[]) {
-    for(let i=0; i<=12; i++) {
+    for(let i=0; i<12; i++) {
       var dataRow = this.transposeOneScale(i);
       rows.push(dataRow); 
     }
   }
   getHighNotes(rows: TransposedRow[]) {
-    for(let i=12; i<=24; i++) {
+    for(let i=12; i<24; i++) {
       var dataRow = this.transposeOneScale(i);
       rows.push(dataRow); 
     }
   }
   getSuperHighNotes(rows: TransposedRow[]) {
-    for(let i=24; i<=36; i++) {
+    for(let i=24; i<36; i++) {
       var dataRow = this.transposeOneScale(i);
       rows.push(dataRow); 
     }
