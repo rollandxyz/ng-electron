@@ -1,9 +1,12 @@
 import { MatTableDataSource } from '@angular/material/table';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { rowsAnimation } from './../../animations/template.animations';
 import { TransposedRow } from './../../models/transposed-row';
 import { NoteService } from './../../services/note.service';
 import { FormBuilder } from '@angular/forms';
+import { NoteScales } from  './../../models/note-scale';
+import { OctaveLevels } from  './../../models/octave-level';
+
 
 @Component({
   selector: 'app-music-note',
@@ -12,6 +15,7 @@ import { FormBuilder } from '@angular/forms';
   animations: [rowsAnimation],
 })
 export class MusicNoteComponent {
+  noteScales =  Object.keys(NoteScales);
   transposedNotes: string[] = [];
 
   displayedColumns = [
@@ -20,35 +24,37 @@ export class MusicNoteComponent {
   dataSource: MatTableDataSource<TransposedRow>;
   transposedRows: TransposedRow[] = [];
   typeOfNotes = this._formBuilder.group({
-    lowNotes: false,
     superLowNotes: false,
-    middleNotes: true,
+    lowNotes: true,
+    middleNotes: false,
     highNotes: false,
     superHighNotes: false
-  });
+  });  
+  noteScale: NoteScales = NoteScales.SEVENNOTESCALE;
   
   constructor(private noteService: NoteService, private _formBuilder: FormBuilder) {
-    this.noteService.getMiddleNotes(this.transposedRows);
+    this.noteService.getNotes(this.transposedRows, this.noteScale, OctaveLevels.LOW);
     // Assign the data to the data source for the table to render.
     this.dataSource = new MatTableDataSource(this.transposedRows);
   }
 
   typeOfNoteChanged() {
     this.transposedRows = [];
+
     if (this.typeOfNotes.value.superLowNotes) {
-      this.noteService.getSuperLowNotes(this.transposedRows);
+      this.noteService.getNotes(this.transposedRows, this.noteScale, OctaveLevels.SUPERLOW);
     }
     if (this.typeOfNotes.value.lowNotes) {
-      this.noteService.getLowNotes(this.transposedRows);
+      this.noteService.getNotes(this.transposedRows, this.noteScale, OctaveLevels.LOW);
     }
     if (this.typeOfNotes.value.middleNotes) {
-      this.noteService.getMiddleNotes(this.transposedRows);
+      this.noteService.getNotes(this.transposedRows, this.noteScale, OctaveLevels.MIDDLE);
     }
     if (this.typeOfNotes.value.highNotes) {
-      this.noteService.getHighNotes(this.transposedRows);
+      this.noteService.getNotes(this.transposedRows, this.noteScale, OctaveLevels.HIGH);
     }
     if (this.typeOfNotes.value.superHighNotes) {
-      this.noteService.getSuperHighNotes(this.transposedRows);
+      this.noteService.getNotes(this.transposedRows, this.noteScale, OctaveLevels.SUPERHIGH);
     }  
     this.dataSource = new MatTableDataSource(this.transposedRows);
   }
