@@ -1,16 +1,11 @@
 
 <section class="example-section" [formGroup]="typeOfNotes">
-  <mat-checkbox formControlName="superLowNotes"  (change)="typeOfNoteChanged(noteScaleValue)">superLowNotes</mat-checkbox>
-  <mat-checkbox formControlName="lowNotes"  (change)="typeOfNoteChanged(noteScaleValue)">lowNotes</mat-checkbox>
-  <mat-checkbox formControlName="middleNotes"  (change)="typeOfNoteChanged(noteScaleValue)">middleNotes</mat-checkbox>
-  <mat-checkbox formControlName="highNotes"  (change)="typeOfNoteChanged(noteScaleValue)">highNotes</mat-checkbox>
-  <mat-checkbox formControlName="superHighNotes"  (change)="typeOfNoteChanged(noteScaleValue)">superHighNotes</mat-checkbox>
+  <mat-checkbox formControlName="superLowNotes"  (change)="typeOfNoteChanged()">superLowNotes</mat-checkbox>
+  <mat-checkbox formControlName="lowNotes"  (change)="typeOfNoteChanged()">lowNotes</mat-checkbox>
+  <mat-checkbox formControlName="middleNotes"  (change)="typeOfNoteChanged()">middleNotes</mat-checkbox>
+  <mat-checkbox formControlName="highNotes"  (change)="typeOfNoteChanged()">highNotes</mat-checkbox>
+  <mat-checkbox formControlName="superHighNotes"  (change)="typeOfNoteChanged()">superHighNotes</mat-checkbox>
 </section>
-<mat-radio-group aria-label="Select an option">
-  <mat-radio-button value="7" checked="true" (click)="typeOfNoteChanged(7)"> 7 NoteScale</mat-radio-button>
-  <mat-radio-button value="12" (click)="typeOfNoteChanged(12)"> 12 NoteScale</mat-radio-button>
-</mat-radio-group>
-
 
 <div class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">

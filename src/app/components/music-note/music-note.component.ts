@@ -19,35 +19,31 @@ export class MusicNoteComponent {
   transposedNotes: string[] = [];
 
   displayedColumns = [
-    //'Move SemiTone', 'Moveable Notes',
+    'Move SemiTone', 'Moveable Notes',
    'C', 'C#-Db', 'D', 'D#-Eb', 'E', 'F', 'F#-Gb', 'G', 'G#-Ab', 'A', 'A#-Bb', 'B'];
   dataSource: MatTableDataSource<TransposedRow>;
   transposedRows: TransposedRow[] = [];
   typeOfNotes = this._formBuilder.group({
     superLowNotes: false,
-    lowNotes: true,
-    middleNotes: false,
+    lowNotes: false,
+    middleNotes: true,
     highNotes: false,
     superHighNotes: false
   });  
-  noteScale: NoteScales = NoteScales.SEVENNOTESCALE;
-  noteScaleValue = 7;
+  noteScale: NoteScales = NoteScales.TWELVENOTESCAL;
   
   constructor(private noteService: NoteService, private _formBuilder: FormBuilder) {
-    this.noteService.getNotes(this.transposedRows, this.noteScale, OctaveLevels.LOW);
-    // Assign the data to the data source for the table to render.
+    this. typeOfNoteChanged();
     this.dataSource = new MatTableDataSource(this.transposedRows);
   }
 
-  typeOfNoteChanged(noteScaleValue: number) {
+  typeOfNoteChanged() {
     this.transposedRows = [];
-    this.noteScaleValue = noteScaleValue;
-    this.noteScale = this.noteScaleValue === 12 ? NoteScales.TWELVENOTESCAL : NoteScales.SEVENNOTESCALE;
     if (this.typeOfNotes.value.superLowNotes) {
-      this.noteService.getNotes(this.transposedRows, this.noteScale, OctaveLevels.SUPERLOW);
+      this.noteService.getLowNotes(this.transposedRows, this.noteScale, OctaveLevels.SUPERLOW);
     }
     if (this.typeOfNotes.value.lowNotes) {
-      this.noteService.getNotes(this.transposedRows, this.noteScale, OctaveLevels.LOW);
+      this.noteService.getLowNotes(this.transposedRows, this.noteScale, OctaveLevels.LOW);
     }
     if (this.typeOfNotes.value.middleNotes) {
       this.noteService.getNotes(this.transposedRows, this.noteScale, OctaveLevels.MIDDLE);

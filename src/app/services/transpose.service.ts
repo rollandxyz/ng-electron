@@ -1,14 +1,10 @@
-
 import { Injectable } from "@angular/core";
 
 @Injectable()
 export class TransposeService {
-
   constructor() {}
-
   
   public transposeFixDo(aNote:string, numOfSemiTone: number) {
-    const fromMajor = "C#";
     const A = ["1","1#","2","2#","3","4","4#","5","5#","6","6#","7"];
     const B = ["1","2$","2","3$","3","4","5$","5","6$","6","7$","7"];
     const M = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
@@ -31,18 +27,21 @@ export class TransposeService {
 
     // major diff
     const dif = numOfSemiTone; 
-
     let pos = nIndex + dif;
     if (pos < 0) {
-      pos = Math.abs(pos)
-      down = down + Math.floor(pos/maxLength);
+      let c = -1;
+      while(pos<0) {
+        c = c + 1;
+        pos = pos + maxLength;
+      }
+      down = down + c;
     } 
     else {
       up = Math.floor(pos/maxLength) + up;      
     }
     pos =  pos % maxLength;
-
     const adjust = up - down;
+
     if (adjust < 0) {
       return A[pos] + ",".repeat(Math.abs(adjust));
     } else {
