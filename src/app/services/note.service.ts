@@ -15,7 +15,7 @@ export class NoteService {
       let semi = i + octave;     
       if (octave < 0) {
         semi = -1*(i + Math.abs(octave));  
-        console.log('semi', semi);
+        //console.log('semi', semi);
       }
       
       if (noteScale === NoteScales.TWELVENOTESCAL){

@@ -31,6 +31,7 @@ export class MusicNoteComponent {
     superHighNotes: false
   });  
   noteScale: NoteScales = NoteScales.SEVENNOTESCALE;
+  noteScaleValue = 7;
   
   constructor(private noteService: NoteService, private _formBuilder: FormBuilder) {
     this.noteService.getNotes(this.transposedRows, this.noteScale, OctaveLevels.LOW);
@@ -38,9 +39,10 @@ export class MusicNoteComponent {
     this.dataSource = new MatTableDataSource(this.transposedRows);
   }
 
-  typeOfNoteChanged() {
+  typeOfNoteChanged(noteScaleValue: number) {
     this.transposedRows = [];
-
+    this.noteScaleValue = noteScaleValue;
+    this.noteScale = this.noteScaleValue === 12 ? NoteScales.TWELVENOTESCAL : NoteScales.SEVENNOTESCALE;
     if (this.typeOfNotes.value.superLowNotes) {
       this.noteService.getNotes(this.transposedRows, this.noteScale, OctaveLevels.SUPERLOW);
     }
